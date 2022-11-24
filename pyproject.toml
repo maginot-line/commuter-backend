@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "commuter-backend"
+version = "0.1.0"
+description = ""
+authors = ["CHOI HYUNWOO <kr.choi.hyunwoo@gmail.com>"]
+readme = "README.md"
+packages = [{include = "commuter_backend"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
