@@ -10,21 +10,50 @@ class Workplace(CommonModel):
         YEARLY = ("yearly", "연봉")
 
     name = models.CharField(max_length=100)
-    Occupation = models.ForeignKey("workplaces.Occupation", on_delete=models.CASCADE, related_name="workplaces")
+    occupations = models.ManyToManyField("workplaces.Occupation", related_name="workplaces")
     address = models.ForeignKey("addresses.Address", on_delete=models.CASCADE, related_name="workplaces")
-    working_day = models.CharField(max_length=100)
-    working_start_time = models.TimeField()
-    working_end_time = models.TimeField()
+    work_days_of_week = models.ManyToManyField("workplaces.WorkDayOfWeek", related_name="workplaces")
+    start_work_time = models.TimeField()
+    off_work_time = models.TimeField()
     working_hours = models.IntegerField()
     salary_type = models.CharField(max_length=7, choices=SalaryTypeChoices.choices, blank=True)
     salary = models.PositiveIntegerField(blank=True, null=True)
-    benefits = models.TextField(blank=True)
+    benefits = models.ManyToManyField("workplaces.Benefit", related_name="workplaces")
+
+    def __str__(self):
+        return f"{self.name}"
+
+    def occupations_list(self):
+        occupations = []
+        for name in self.occupations.values_list("name", flat=True):
+            occupations.append(name)
+        return ", ".join(occupations)
+
+    def work_days(self):
+        return f"{self.work_days_of_week.count()}"
+
+    def benefits_list(self):
+        benefits = []
+        for name in self.benefits.values_list("name", flat=True):
+            benefits.append(name)
+        return ", ".join(benefits)
+
+
+class Occupation(CommonModel):
+    name = models.CharField(max_length=100)
 
     def __str__(self):
         return f"{self.name}"
 
 
-class Occupation(CommonModel):
+class WorkDayOfWeek(CommonModel):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.name}"
+
+
+class Benefit(CommonModel):
     name = models.CharField(max_length=100)
 
     def __str__(self):
