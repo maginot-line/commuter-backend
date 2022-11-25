@@ -6,9 +6,19 @@ from .models import User
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
     fieldsets = (
-        ("Profile", {"fields": ("name", "phone_number", "mobile_carrier", "resident_registration_number", "is_phone_number_verified")}),
+        ("Profile", {"fields": ("name", "phone_number", "mobile_carrier", "resident_registration_number", "is_phone_number_verified", "is_host", "company")}),
         ("Permissions", {"fields": ("is_active", "is_staff", "is_superuser", "groups", "user_permissions")}),
         ("Important dates", {"fields": ("last_login", "date_joined"), "classes": ("collapse",)}),
     )
 
-    list_display = ("username", "name", "phone_number", "mobile_carrier", "resident_registration_number", "is_phone_number_verified", "is_staff")
+    list_display = (
+        "username",
+        "name",
+        "phone_number",
+        "mobile_carrier",
+        "resident_registration_number",
+        "is_phone_number_verified",
+        "is_host",
+        "company",
+        "is_staff",
+    )
