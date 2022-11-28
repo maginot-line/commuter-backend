@@ -44,7 +44,6 @@ CUSTOM_APPS = [
     "users.apps.UsersConfig",
     "addresses.apps.AddressesConfig",
     "companies.apps.CompaniesConfig",
-    "people_in_charge.apps.PeopleInChargeConfig",
     "posts.apps.PostsConfig",
     "workplaces.apps.WorkplacesConfig",
 ]
