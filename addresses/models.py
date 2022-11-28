@@ -4,8 +4,9 @@ from common.models import CommonModel
 # Create your models here.
 class Address(CommonModel):
     class AddressTypeChoices(models.TextChoices):
-        WORKPLACE = ("workplace", "WorkPlace")
         COMPANY = ("company", "Company")
+        USER = ("user", "User")
+        WORKPLACE = ("workplace", "WorkPlace")
 
     address_type = models.CharField(max_length=10, choices=AddressTypeChoices.choices)
     address = models.CharField(max_length=100)

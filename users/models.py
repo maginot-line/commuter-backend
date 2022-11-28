@@ -18,8 +18,8 @@ class User(AbstractUser):
     gender = models.CharField(max_length=6, choices=GenderChoices.choices, blank=True)
     name = models.CharField(max_length=20, blank=True)
     is_phone_number_verified = models.BooleanField(default=False)
+    address = models.ForeignKey("addresses.Address", on_delete=models.CASCADE, related_name="users", blank=True, null=True)
+    email = models.EmailField(blank=True)
     avatar = models.FileField(blank=True)
-    is_host = models.BooleanField(default=False)
     company = models.ForeignKey("companies.Company", on_delete=models.CASCADE, related_name="users", blank=True, null=True, default=None)
-    # address
-    # email
+    is_responsibility = models.BooleanField(default=False)
