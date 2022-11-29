@@ -16,4 +16,4 @@ class Company(CommonModel):
     address = models.ForeignKey("addresses.Address", on_delete=models.CASCADE, related_name="companies")
 
     def __str__(self):
-        return f"[ {self.company_type} ] {self.name}"
+        return f"{self.company_type} - {self.name}"

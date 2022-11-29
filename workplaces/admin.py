@@ -1,12 +1,11 @@
 from django.contrib import admin
-from .models import Workplace, Occupation, Benefit
+from .models import Workplace, Benefit
 
 # Register your models here.
 @admin.register(Workplace)
 class WorkplaceAdmin(admin.ModelAdmin):
     list_display = (
         "name",
-        "occupations_list",
         "address",
         "work_days",
         "start_work_time",
@@ -19,7 +18,6 @@ class WorkplaceAdmin(admin.ModelAdmin):
 
     list_filter = (
         "name",
-        "occupations",
         "address",
         "work_days_of_week",
         "start_work_time",
@@ -31,7 +29,6 @@ class WorkplaceAdmin(admin.ModelAdmin):
     )
 
     search_fields = (
-        "occupations",
         "working_hours",
         "salary_type",
         "benefits",
@@ -43,7 +40,6 @@ class WorkplaceAdmin(admin.ModelAdmin):
             {
                 "fields": (
                     "name",
-                    "occupations",
                     "address",
                     "work_days_of_week",
                     "start_work_time",
@@ -54,22 +50,6 @@ class WorkplaceAdmin(admin.ModelAdmin):
                     "benefits",
                 )
             },
-        ),
-    )
-
-
-@admin.register(Occupation)
-class OccupationAdmin(admin.ModelAdmin):
-    list_display = ("name",)
-
-    list_filter = ("name",)
-
-    search_fields = ("name",)
-
-    fieldsets = (
-        (
-            "Occupation",
-            {"fields": ("name",)},
         ),
     )
 

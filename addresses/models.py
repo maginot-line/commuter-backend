@@ -15,4 +15,4 @@ class Address(CommonModel):
     longitude = models.FloatField()
 
     def __str__(self):
-        return f"[ {self.address_type} ] {self.address}"
+        return f"{self.address_type} - {self.address}"

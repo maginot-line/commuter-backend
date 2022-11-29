@@ -10,7 +10,6 @@ class Workplace(CommonModel):
         YEARLY = ("yearly", "연봉")
 
     name = models.CharField(max_length=100)
-    occupations = models.ManyToManyField("workplaces.Occupation", related_name="workplaces")
     address = models.ForeignKey("addresses.Address", on_delete=models.CASCADE, related_name="workplaces")
     work_days_of_week = models.ManyToManyField("workplaces.WorkDayOfWeek", related_name="workplaces")
     start_work_time = models.TimeField()
@@ -23,12 +22,6 @@ class Workplace(CommonModel):
     def __str__(self):
         return f"{self.name}"
 
-    def occupations_list(self):
-        occupations = []
-        for name in self.occupations.values_list("name", flat=True):
-            occupations.append(name)
-        return ", ".join(occupations)
-
     def work_days(self):
         return f"{self.work_days_of_week.count()}"
 
@@ -37,13 +30,6 @@ class Workplace(CommonModel):
         for name in self.benefits.values_list("name", flat=True):
             benefits.append(name)
         return ", ".join(benefits)
-
-
-class Occupation(CommonModel):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return f"{self.name}"
 
 
 class WorkDayOfWeek(CommonModel):
