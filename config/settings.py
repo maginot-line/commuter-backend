@@ -43,6 +43,7 @@ CUSTOM_APPS = [
     "common.apps.CommonConfig",
     "users.apps.UsersConfig",
     "addresses.apps.AddressesConfig",
+    "categories.apps.CategoriesConfig",
     "companies.apps.CompaniesConfig",
     "posts.apps.PostsConfig",
     "workplaces.apps.WorkplacesConfig",
