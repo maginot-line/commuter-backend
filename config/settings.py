@@ -46,6 +46,7 @@ CUSTOM_APPS = [
     "categories.apps.CategoriesConfig",
     "companies.apps.CompaniesConfig",
     "posts.apps.PostsConfig",
+    "resumes.apps.ResumesConfig",
     "workplaces.apps.WorkplacesConfig",
 ]
 
